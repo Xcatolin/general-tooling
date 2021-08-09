@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Exploit for the VulnHub Brainpan machine.
+
 print("""\
             ____            _                                            
            |  _ \          (_)                                           

@@ -4,12 +4,12 @@ import requests
 import sys
 import socket
 
-if len(sys.argv) > 1:
+if len(sys.argv) > 3:
 	target = sys.argv[1]
 	port = int(sys.argv[2])
 	wordlist = sys.argv[3]
 else:
-	print("Usage: ./brute.py <wordlist>")
+	print("Usage: ./brute.py <target> <port> <wordlist>")
 	sys.exit(1)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

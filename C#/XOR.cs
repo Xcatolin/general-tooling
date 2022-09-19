@@ -13,14 +13,20 @@ namespace XOR {
             }
 
             StringBuilder hex = new StringBuilder(encoded.Length * 2);
-            foreach (byte b in encoded) {
-                hex.AppendFormat("0x{0:x2}, ", b);
+            int len = buf.Length;
+            for (int i = 0; i < buf.Length; i++) {
+                byte b = encoded[i];
+                //Avoid extra comma
+                if ((i + 1) == len) {
+                    hex.AppendFormat("0x{0:x2}", b);
+                } else {
+                    hex.AppendFormat("0x{0:x2}, ", b);
+                }
             }
 
             string final = hex.ToString();
-            string result = final.Remove(final.Length - 2);
 
-            Console.WriteLine(result);
+            Console.WriteLine(final);
         }
     }
 }

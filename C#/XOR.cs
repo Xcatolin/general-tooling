@@ -6,10 +6,15 @@ namespace XOR {
         static void Main(string[] args) {
             byte[] buf = new byte[] {}; //Generated shellcode
             byte[] encoded = new byte[buf.Length];
-            char key = 'X'; //Change here
+            char[] key = { 'k', 'e', 'y' };
+            int n = 0;
 
             for (int i = 0; i < buf.Length; i++) {
-                encoded[i] = (byte)(buf[i] ^ key);
+                if (n == key.Length) {
+                    n = 0;
+                }
+                encoded[i] = (byte)(buf[i] ^ Convert.ToByte(key[n]));
+                n++;
             }
 
             StringBuilder hex = new StringBuilder(encoded.Length * 2);

